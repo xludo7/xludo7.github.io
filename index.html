@@ -13,7 +13,6 @@
       color: #111;
     }
 
-    /* ── Header ── */
     header {
       background: #fff;
       border-bottom: 1px solid #e5e5e5;
@@ -36,7 +35,6 @@
     }
     header nav a:hover { color: #e47911; }
 
-    /* ── Hero ── */
     .hero {
       background: #fff;
       border-bottom: 1px solid #e5e5e5;
@@ -46,7 +44,6 @@
     .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
     .hero p { color: #666; font-size: 1rem; }
 
-    /* ── Grid ── */
     .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
     .section-title {
       font-size: 1rem;
@@ -62,7 +59,6 @@
       gap: 20px;
     }
 
-    /* ── Card ── */
     .card {
       background: #fff;
       border: 1px solid #e5e5e5;
@@ -74,12 +70,19 @@
     }
     .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
 
-    .card-img {
+    .card-img-wrap {
       width: 100%;
       aspect-ratio: 1;
-      object-fit: contain;
-      padding: 16px;
       background: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .card-img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
 
     .card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
@@ -127,7 +130,6 @@
     }
     .btn:hover { background: #c96e00; }
 
-    /* ── Footer ── */
     footer {
       margin-top: 48px;
       border-top: 1px solid #e5e5e5;
@@ -153,19 +155,17 @@
 
 <div class="hero">
   <h1>Best Amazon Deals, Every Day</h1>
-  <p>Handpicked discounts across Europe — IT · DE · FR · ES · UK · NL</p>
+  <p>Handpicked discounts across Europe — IT · DE · FR · ES · UK · NL · BE</p>
 </div>
 
 <div class="container">
   <p class="section-title">Today's Picks</p>
   <div class="grid">
 
-    <!-- 1 -->
     <div class="card">
-      <img class="card-img"
-           src="https://m.media-amazon.com/images/I/71aFt4+OTOL._AC_SL300_.jpg"
-           alt="Kindle Paperwhite 2023"
-           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/71aFt4+OTOL._AC_SL300_.jpg" alt="Kindle Paperwhite">
+      </div>
       <div class="card-body">
         <span class="badge">-26%</span>
         <p class="card-title">Kindle Paperwhite (16 GB) — 7" display, adjustable warm light, weeks of battery life</p>
@@ -174,16 +174,14 @@
           <span class="price-was">€174.99</span>
         </div>
         <span class="flag">🇮🇹 amazon.it</span>
-        <a class="btn" href="https://www.amazon.it/s?k=kindle+paperwhite+2023&tag=ludo705-21" target="_blank" rel="noopener">View Deal →</a>
+        <a class="btn" href="https://www.amazon.it/s?k=kindle+paperwhite+2023&tag=xiudxo-21" target="_blank" rel="noopener">View Deal →</a>
       </div>
     </div>
 
-    <!-- 2 -->
     <div class="card">
-      <img class="card-img"
-           src="https://m.media-amazon.com/images/I/51xwGSNX-EL._AC_SL300_.jpg"
-           alt="Echo Dot 5th Gen"
-           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/51xwGSNX-EL._AC_SL300_.jpg" alt="Echo Dot">
+      </div>
       <div class="card-body">
         <span class="badge">-50%</span>
         <p class="card-title">Amazon Echo Dot (5th Gen) — Smart Speaker with Alexa, improved bass</p>
@@ -192,16 +190,14 @@
           <span class="price-was">€49.99</span>
         </div>
         <span class="flag">🇩🇪 amazon.de</span>
-        <a class="btn" href="https://www.amazon.de/s?k=echo+dot+5th+generation&tag=ludo701-21" target="_blank" rel="noopener">View Deal →</a>
+        <a class="btn" href="https://www.amazon.de/s?k=echo+dot+5th+generation&tag=xiudxo01-21" target="_blank" rel="noopener">View Deal →</a>
       </div>
     </div>
 
-    <!-- 3 -->
     <div class="card">
-      <img class="card-img"
-           src="https://m.media-amazon.com/images/I/51TjEpDQPjL._AC_SL300_.jpg"
-           alt="Fire TV Stick 4K"
-           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/51TjEpDQPjL._AC_SL300_.jpg" alt="Fire TV Stick 4K">
+      </div>
       <div class="card-body">
         <span class="badge">-40%</span>
         <p class="card-title">Fire TV Stick 4K (2023) — Streaming device with Wi-Fi 6, Dolby Vision</p>
@@ -210,16 +206,14 @@
           <span class="price-was">€49.99</span>
         </div>
         <span class="flag">🇫🇷 amazon.fr</span>
-        <a class="btn" href="https://www.amazon.fr/s?k=fire+tv+stick+4k&tag=ludo700-21" target="_blank" rel="noopener">View Deal →</a>
+        <a class="btn" href="https://www.amazon.fr/s?k=fire+tv+stick+4k&tag=xiudxo02-21" target="_blank" rel="noopener">View Deal →</a>
       </div>
     </div>
 
-    <!-- 4 -->
     <div class="card">
-      <img class="card-img"
-           src="https://m.media-amazon.com/images/I/71bhWgQK-cL._AC_SL300_.jpg"
-           alt="AirPods Pro 2nd Gen"
-           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/71bhWgQK-cL._AC_SL300_.jpg" alt="AirPods Pro">
+      </div>
       <div class="card-body">
         <span class="badge">-22%</span>
         <p class="card-title">Apple AirPods Pro (2nd Gen) — Active Noise Cancellation, Adaptive Audio, USB-C</p>
@@ -228,16 +222,14 @@
           <span class="price-was">€279.00</span>
         </div>
         <span class="flag">🇪🇸 amazon.es</span>
-        <a class="btn" href="https://www.amazon.es/s?k=airpods+pro+2&tag=ludo7-21" target="_blank" rel="noopener">View Deal →</a>
+        <a class="btn" href="https://www.amazon.es/s?k=airpods+pro+2&tag=xiudxo00-21" target="_blank" rel="noopener">View Deal →</a>
       </div>
     </div>
 
-    <!-- 5 -->
     <div class="card">
-      <img class="card-img"
-           src="https://m.media-amazon.com/images/I/81bLP8HBSYL._AC_SL300_.jpg"
-           alt="Samsung T7 SSD"
-           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/81bLP8HBSYL._AC_SL300_.jpg" alt="Samsung T7 SSD">
+      </div>
       <div class="card-body">
         <span class="badge">-35%</span>
         <p class="card-title">Samsung T7 Portable SSD 1TB — USB 3.2 Gen 2, up to 1050 MB/s</p>
@@ -246,25 +238,119 @@
           <span class="price-was">£99.99</span>
         </div>
         <span class="flag">🇬🇧 amazon.co.uk</span>
-        <a class="btn" href="https://www.amazon.co.uk/s?k=samsung+t7+ssd+1tb&tag=ludo70e-21" target="_blank" rel="noopener">View Deal →</a>
+        <a class="btn" href="https://www.amazon.co.uk/s?k=samsung+t7+ssd+1tb&tag=xiudxo0a-21" target="_blank" rel="noopener">View Deal →</a>
       </div>
     </div>
 
-    <!-- 6 -->
     <div class="card">
-      <img class="card-img"
-           src="https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL300_.jpg"
-           alt="Philips Hue Starter Kit"
-           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/61CGHv6kmWL._AC_SL300_.jpg" alt="Philips Hue">
+      </div>
       <div class="card-body">
         <span class="badge">-30%</span>
-        <p class="card-title">Philips Hue White & Color Ambiance Starter Kit — 3 bulbs + Bridge</p>
+        <p class="card-title">Philips Hue White & Color Ambiance Starter Kit — 3 smart bulbs + Bridge</p>
         <div class="prices">
           <span class="price-now">€104.99</span>
           <span class="price-was">€149.99</span>
         </div>
         <span class="flag">🇳🇱 amazon.nl</span>
-        <a class="btn" href="https://www.amazon.nl/s?k=philips+hue+starter+kit&tag=ludo702-21" target="_blank" rel="noopener">View Deal →</a>
+        <a class="btn" href="https://www.amazon.nl/s?k=philips+hue+starter+kit&tag=xiudxo08-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/71966O+GPUL._AC_SL300_.jpg" alt="Instant Pot">
+      </div>
+      <div class="card-body">
+        <span class="badge">-45%</span>
+        <p class="card-title">Instant Pot Duo 7-in-1 Electric Pressure Cooker, 5.7L — slow cooker, rice cooker, steamer</p>
+        <div class="prices">
+          <span class="price-now">€79.99</span>
+          <span class="price-was">€144.99</span>
+        </div>
+        <span class="flag">🇮🇹 amazon.it</span>
+        <a class="btn" href="https://www.amazon.it/s?k=instant+pot+duo&tag=xiudxo-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/61MPMMMcpKL._AC_SL300_.jpg" alt="Logitech MX Master">
+      </div>
+      <div class="card-body">
+        <span class="badge">-28%</span>
+        <p class="card-title">Logitech MX Master 3S — Wireless Performance Mouse, 8K DPI, silent clicks</p>
+        <div class="prices">
+          <span class="price-now">€71.99</span>
+          <span class="price-was">€99.99</span>
+        </div>
+        <span class="flag">🇩🇪 amazon.de</span>
+        <a class="btn" href="https://www.amazon.de/s?k=logitech+mx+master+3s&tag=xiudxo01-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/71h6LTf6AFL._AC_SL300_.jpg" alt="Nespresso Vertuo">
+      </div>
+      <div class="card-body">
+        <span class="badge">-33%</span>
+        <p class="card-title">Nespresso Vertuo Pop — Coffee & Espresso Machine by De'Longhi, 5 cup sizes</p>
+        <div class="prices">
+          <span class="price-now">€59.99</span>
+          <span class="price-was">€89.99</span>
+        </div>
+        <span class="flag">🇫🇷 amazon.fr</span>
+        <a class="btn" href="https://www.amazon.fr/s?k=nespresso+vertuo+pop&tag=xiudxo02-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/61GtxgCqS4L._AC_SL300_.jpg" alt="Robot Vacuum">
+      </div>
+      <div class="card-body">
+        <span class="badge">-55%</span>
+        <p class="card-title">Xiaomi Robot Vacuum S10+ — Auto empty, 4000Pa suction, LiDAR navigation</p>
+        <div class="prices">
+          <span class="price-now">€179.99</span>
+          <span class="price-was">€399.99</span>
+        </div>
+        <span class="flag">🇪🇸 amazon.es</span>
+        <a class="btn" href="https://www.amazon.es/s?k=robot+aspirador+xiaomi&tag=xiudxo00-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/71EK3x+YRUL._AC_SL300_.jpg" alt="Philips Airfryer">
+      </div>
+      <div class="card-body">
+        <span class="badge">-38%</span>
+        <p class="card-title">Philips Essential Airfryer XL — 6.2L, Rapid Air technology, digital display</p>
+        <div class="prices">
+          <span class="price-now">€99.99</span>
+          <span class="price-was">€159.99</span>
+        </div>
+        <span class="flag">🇧🇪 amazon.com.be</span>
+        <a class="btn" href="https://www.amazon.com.be/s?k=philips+airfryer+xl&tag=xiudxo06-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/71gguCBQXSL._AC_SL300_.jpg" alt="Nintendo Switch">
+      </div>
+      <div class="card-body">
+        <span class="badge">-20%</span>
+        <p class="card-title">Nintendo Switch OLED Model — 7" OLED screen, enhanced audio, 64GB storage</p>
+        <div class="prices">
+          <span class="price-now">£279.99</span>
+          <span class="price-was">£349.99</span>
+        </div>
+        <span class="flag">🇬🇧 amazon.co.uk</span>
+        <a class="btn" href="https://www.amazon.co.uk/s?k=nintendo+switch+oled&tag=xiudxo0a-21" target="_blank" rel="noopener">View Deal →</a>
       </div>
     </div>
 
