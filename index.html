@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DealSpot — Best Amazon Deals</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    /* ── Header ── */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; }
+    .logo span { color: #e47911; }
+    header nav a {
+      text-decoration: none;
+      color: #555;
+      font-size: 0.9rem;
+      margin-left: 20px;
+    }
+    header nav a:hover { color: #e47911; }
+
+    /* ── Hero ── */
+    .hero {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .hero p { color: #666; font-size: 1rem; }
+
+    /* ── Grid ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.15s;
+    }
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      padding: 16px;
+      background: #fafafa;
+    }
+
+    .card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+    .badge {
+      display: inline-block;
+      background: #e47911;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+
+    .card-title {
+      font-size: 0.88rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: #111;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .prices { display: flex; align-items: baseline; gap: 8px; margin-top: auto; }
+    .price-now { font-size: 1.15rem; font-weight: 700; color: #e47911; }
+    .price-was { font-size: 0.82rem; color: #aaa; text-decoration: line-through; }
+
+    .flag { font-size: 0.78rem; color: #888; }
+
+    .btn {
+      display: block;
+      margin-top: 10px;
+      background: #e47911;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 9px 0;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: #c96e00; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 48px;
+      border-top: 1px solid #e5e5e5;
+      background: #fff;
+      padding: 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      line-height: 1.7;
+    }
+    footer a { color: #aaa; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Deal<span>Spot</span></div>
+  <nav>
+    <a href="#">Deals</a>
+    <a href="#">About</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Best Amazon Deals, Every Day</h1>
+  <p>Handpicked discounts across Europe — IT · DE · FR · ES · UK · NL</p>
+</div>
+
+<div class="container">
+  <p class="section-title">Today's Picks</p>
+  <div class="grid">
+
+    <!-- 1 -->
+    <div class="card">
+      <img class="card-img"
+           src="https://m.media-amazon.com/images/I/71aFt4+OTOL._AC_SL300_.jpg"
+           alt="Kindle Paperwhite 2023"
+           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-body">
+        <span class="badge">-26%</span>
+        <p class="card-title">Kindle Paperwhite (16 GB) — 7" display, adjustable warm light, weeks of battery life</p>
+        <div class="prices">
+          <span class="price-now">€129.99</span>
+          <span class="price-was">€174.99</span>
+        </div>
+        <span class="flag">🇮🇹 amazon.it</span>
+        <a class="btn" href="https://www.amazon.it/dp/B0CFPJYX7D?tag=ludo705-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <img class="card-img"
+           src="https://m.media-amazon.com/images/I/51xwGSNX-EL._AC_SL300_.jpg"
+           alt="Echo Dot 5th Gen"
+           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-body">
+        <span class="badge">-50%</span>
+        <p class="card-title">Amazon Echo Dot (5th Gen) — Smart Speaker with Alexa, improved bass</p>
+        <div class="prices">
+          <span class="price-now">€24.99</span>
+          <span class="price-was">€49.99</span>
+        </div>
+        <span class="flag">🇩🇪 amazon.de</span>
+        <a class="btn" href="https://www.amazon.de/dp/B09B8X9HGN?tag=ludo701-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <img class="card-img"
+           src="https://m.media-amazon.com/images/I/51TjEpDQPjL._AC_SL300_.jpg"
+           alt="Fire TV Stick 4K"
+           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-body">
+        <span class="badge">-40%</span>
+        <p class="card-title">Fire TV Stick 4K (2023) — Streaming device with Wi-Fi 6, Dolby Vision</p>
+        <div class="prices">
+          <span class="price-now">€29.99</span>
+          <span class="price-was">€49.99</span>
+        </div>
+        <span class="flag">🇫🇷 amazon.fr</span>
+        <a class="btn" href="https://www.amazon.fr/dp/B0CG85DS9G?tag=ludo700-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <img class="card-img"
+           src="https://m.media-amazon.com/images/I/71bhWgQK-cL._AC_SL300_.jpg"
+           alt="AirPods Pro 2nd Gen"
+           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-body">
+        <span class="badge">-22%</span>
+        <p class="card-title">Apple AirPods Pro (2nd Gen) — Active Noise Cancellation, Adaptive Audio, USB-C</p>
+        <div class="prices">
+          <span class="price-now">€219.00</span>
+          <span class="price-was">€279.00</span>
+        </div>
+        <span class="flag">🇪🇸 amazon.es</span>
+        <a class="btn" href="https://www.amazon.es/dp/B0CHWRXH8B?tag=ludo7-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <img class="card-img"
+           src="https://m.media-amazon.com/images/I/81bLP8HBSYL._AC_SL300_.jpg"
+           alt="Samsung T7 SSD"
+           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-body">
+        <span class="badge">-35%</span>
+        <p class="card-title">Samsung T7 Portable SSD 1TB — USB 3.2 Gen 2, up to 1050 MB/s</p>
+        <div class="prices">
+          <span class="price-now">£64.99</span>
+          <span class="price-was">£99.99</span>
+        </div>
+        <span class="flag">🇬🇧 amazon.co.uk</span>
+        <a class="btn" href="https://www.amazon.co.uk/dp/B0874YJP92?tag=ludo70e-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <img class="card-img"
+           src="https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL300_.jpg"
+           alt="Philips Hue Starter Kit"
+           onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+      <div class="card-body">
+        <span class="badge">-30%</span>
+        <p class="card-title">Philips Hue White & Color Ambiance Starter Kit — 3 bulbs + Bridge</p>
+        <div class="prices">
+          <span class="price-now">€104.99</span>
+          <span class="price-was">€149.99</span>
+        </div>
+        <span class="flag">🇳🇱 amazon.nl</span>
+        <a class="btn" href="https://www.amazon.nl/dp/B07BVBPXRQ?tag=ludo702-21" target="_blank" rel="noopener">View Deal →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>DealSpot is a participant in the Amazon EU Associates Programme, an affiliate advertising programme<br>
+  designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.</p>
+  <br>
+  <p>Prices and availability are accurate as of the date/time indicated and are subject to change.<br>
+  <a href="mailto:contact@dealspot.eu">contact@dealspot.eu</a></p>
+</footer>
+
+</body>
+</html>
