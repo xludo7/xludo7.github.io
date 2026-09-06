@@ -1,0 +1,42 @@
+name: Weekly deal candidates
+
+on:
+  schedule:
+    - cron: '0 8 * * 1' # every Monday, 08:00 UTC
+  workflow_dispatch: {} # allows manual trigger from the Actions tab
+
+jobs:
+  fetch-deals:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch deal candidates from Keepa
+        env:
+          KEEPA_API_KEY: ${{ secrets.KEEPA_API_KEY }}
+        run: node scripts/fetch-deals.js
+
+      - name: Open PR with draft candidates
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'Weekly deal candidates from Keepa'
+          title: 'Weekly deal candidates — review before merge'
+          body: |
+            Automated price check via Keepa for the products in `assets/watchlist.json`.
+
+            Nothing here is published yet. For each candidate in `assets/deals.draft.json`:
+            1. Decide if it's worth publishing.
+            2. Write your own one-line note (replace the `TODO` placeholder).
+            3. Move it into `assets/deals.js` with a `section` and confirmed `category`.
+            4. Delete the entry from `deals.draft.json`.
+
+            Merge this PR only after that manual review — it does not touch `deals.js` on its own.
+          branch: weekly-deals-draft
+          add-paths: assets/deals.draft.json
