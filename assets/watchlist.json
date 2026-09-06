@@ -1,3 +1,8 @@
 [
-  { "asin": "REPLACE_WITH_REAL_ASIN", "country": "IT", "category": "smartphone" }
+  { "asin": "B0CNPWCRTP", "country": "IT", "category": "smartphone" },
+  { "asin": "B0G2SX5G3J", "country": "DE", "category": "laptop" },
+  { "asin": "B09Y2MYL5C", "country": "ES", "category": "audio" },
+  { "asin": "B0F2T4JFVG", "country": "UK", "category": "gaming" },
+  { "asin": "B0CWP7M17B", "country": "FR", "category": "kitchen" },
+  { "asin": "B09B8X9RGM", "country": "IT", "category": "smart-speaker" }
 ]
