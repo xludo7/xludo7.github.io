@@ -17,3 +17,9 @@ function buildDealUrl(countryCode, searchQuery) {
   const base = `https://www.${country.domain}/s?k=${encodeURIComponent(searchQuery)}`;
   return country.tag ? `${base}&tag=${country.tag}` : base;
 }
+
+function buildAsinUrl(countryCode, asin) {
+  const country = COUNTRIES[countryCode];
+  const base = `https://www.${country.domain}/dp/${asin}`;
+  return country.tag ? `${base}?tag=${country.tag}` : base;
+}

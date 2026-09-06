@@ -1,5 +1,7 @@
-// Renders deal cards from DEALS + COUNTRIES into the grids in index.html.
-// Depends on config.js, deals.js and icons.js being loaded first.
+// Renders deal cards from DEALS (hand-picked, deals.js) plus deals-auto.json
+// (weekly automatic price check via Keepa, see scripts/fetch-deals.js) into
+// the grids in index.html. Depends on config.js, deals.js and icons.js
+// being loaded first.
 
 function formatUpdated(dateStr) {
   const d = new Date(dateStr + 'T00:00:00');
@@ -8,7 +10,7 @@ function formatUpdated(dateStr) {
 
 function buildCard(deal) {
   const country = COUNTRIES[deal.country];
-  const url = buildDealUrl(deal.country, deal.query);
+  const url = deal.asin ? buildAsinUrl(deal.country, deal.asin) : buildDealUrl(deal.country, deal.query);
   const isPending = country.status === 'pending';
 
   const statusNote = isPending
@@ -34,13 +36,27 @@ function buildCard(deal) {
     </div>`;
 }
 
-function renderSection(sectionId, sectionKey) {
+function renderSection(sectionId, sectionKey, allDeals) {
   const el = document.getElementById(sectionId);
   if (!el) return;
-  el.innerHTML = DEALS.filter(d => d.section === sectionKey).map(buildCard).join('');
+  el.innerHTML = allDeals.filter(d => d.section === sectionKey).map(buildCard).join('');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderSection('latest-grid', 'latest');
-  renderSection('picks-grid', 'picks');
+async function loadAutoDeals() {
+  try {
+    const res = await fetch('assets/deals-auto.json', { cache: 'no-store' });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.map(d => ({ ...d, section: d.section || 'latest' }));
+  } catch (err) {
+    console.warn('Could not load automatic deals:', err);
+    return [];
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const autoDeals = await loadAutoDeals();
+  const allDeals = DEALS.concat(autoDeals);
+  renderSection('latest-grid', 'latest', allDeals);
+  renderSection('picks-grid', 'picks', allDeals);
 });

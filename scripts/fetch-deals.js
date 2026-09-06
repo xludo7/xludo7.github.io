@@ -1,9 +1,12 @@
-// Weekly deal-candidate check via the Keepa API.
+// Weekly deal check via the Keepa API — fully automatic.
 // Reads assets/watchlist.json (ASINs you're tracking), checks each one's
 // current price against its 180-day average, and writes anything past the
-// discount threshold to assets/deals.draft.json — a DRAFT, not published
-// content. A human still has to write the note and move entries into
-// deals.js before they go live (see the PR body the workflow opens).
+// discount threshold to assets/deals-auto.json, which the site loads
+// alongside the hand-picked deals in deals.js. The note attached to each
+// entry is generated straight from the price data (e.g. "23% below its
+// 180-day average"), not an invented editorial opinion — see about.html,
+// which describes the process this way on purpose: it has to stay true to
+// what this script actually does.
 
 const fs = require('fs');
 const path = require('path');
@@ -12,6 +15,7 @@ const path = require('path');
 // separate catalogs as of this writing, so NL/BE watchlist entries are
 // skipped with a warning rather than silently mismapped to the wrong domain.
 const KEEPA_DOMAIN_IDS = { US: 1, UK: 2, DE: 3, FR: 4, IT: 8, ES: 9 };
+const CURRENCY_SYMBOLS = { US: '$', UK: '£', DE: '€', FR: '€', IT: '€', ES: '€' };
 
 const DISCOUNT_THRESHOLD = 0.15; // only keep candidates at least 15% below their 180-day average
 const REQUEST_DELAY_MS = 300; // stay well under Keepa's rate limit
@@ -76,25 +80,27 @@ async function main() {
       continue;
     }
 
+    const discountPct = Math.round(discount * 100);
+    const symbol = CURRENCY_SYMBOLS[item.country] || '';
     candidates.push({
       id: `${item.asin}-${item.country}`.toLowerCase(),
       asin: item.asin,
       country: item.country,
       title: product.title || item.asin,
       category: item.category || 'uncategorized',
-      priceNow: current.toFixed(2),
-      priceWas: avg180.toFixed(2),
-      discount: `-${Math.round(discount * 100)}%`,
-      note: 'TODO: write your own one-line note before publishing',
+      priceNow: `${symbol}${current.toFixed(2)}`,
+      priceWas: `${symbol}${avg180.toFixed(2)}`,
+      discount: `-${discountPct}%`,
+      note: `${discountPct}% below its 180-day average price.`,
       updated: new Date().toISOString().slice(0, 10),
     });
 
     await sleep(REQUEST_DELAY_MS);
   }
 
-  const outPath = path.join(__dirname, '..', 'assets', 'deals.draft.json');
+  const outPath = path.join(__dirname, '..', 'assets', 'deals-auto.json');
   fs.writeFileSync(outPath, JSON.stringify(candidates, null, 2) + '\n');
-  console.log(`Wrote ${candidates.length} candidate deal(s) to ${outPath}`);
+  console.log(`Wrote ${candidates.length} deal(s) to ${outPath}`);
 }
 
 main().catch(err => {
